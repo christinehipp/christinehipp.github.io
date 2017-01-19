@@ -1,0 +1,38 @@
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+.c-btn {
+    display: inline-block;
+    cursor: pointer;
+    padding: em(10px) em(20px);
+    border: 0;
+    color: color('link');
+    background: #eee;
+    font-size: $base-font-size;
+    line-height: 1;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: timer('fast');
+
+    @include link-states() {
+        background: darken(#eee, 10%);
+        text-decoration: none;
+    }
+
+}
+
+
+/**
+ * Modifiers for the buttons
+ */
+.c-btn--primary {
+    background: color('primary');
+    color: #fff;
+
+    @include link-states() {
+        background: darken(color('primary'), 10%);
+    }
+
+}

@@ -1,0 +1,62 @@
+////
+/// VARIABLES
+////
+
+
+///
+// Base global defaults
+///
+$base-color:        #000;
+$base-font-family:  sans-serif;
+$base-font-size:    14px;
+$base-line-height:  1.5;
+
+
+
+
+
+/// Generic spacing unit
+$spacing-unit:      20px;
+
+
+
+
+
+///
+// Colors
+///
+$color-config: (
+    'body':         #333,
+    'headings':     #00587d,
+    'primary':      #337ab7,
+    'link':         #f14c10,
+    'grey': (
+        'default':  #7f7f7f,
+        '25':       #bfbfbf,
+        '75':       #474747
+    )
+);
+
+
+
+
+
+///
+// Timer Map for @function timer();
+///
+$timer-config: (
+    'normal':   0.4s,
+    'slow':    0.75s,
+    'fast':    0.15s
+);
+
+
+
+
+
+///
+// Z-index Map for @function z();
+///
+$z-index-config: (
+    'example':   1000
+);

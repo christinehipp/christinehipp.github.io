@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    #PAGE
+\*------------------------------------*/
+
+/**
+ * Body
+ */
+html {
+    background: #f9f9f9;
+    font-family: helvetica, arial, sans-serif;
+    font-size: $base-font-size;
+    line-height: 1.3;
+    border-top: 10px solid #f14c10;
+    line-height: $base-line-height;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

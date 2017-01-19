@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    #HEADINGS
+\*------------------------------------*/
+
+.c-heading-page {
+    font-size: rem(22px);
+
+    @include media('sm') {
+        font-size: rem(36px);
+    }
+
+}
+
+.c-heading-section {
+    font-size: rem(20px);
+
+    @include media('sm') {
+        font-size: rem(30px);
+    }
+
+}
+
+.c-heading-title {
+    font-size: rem(18px);
+
+    @include media('sm') {
+        font-size: rem(24px);
+    }
+
+}
+
+
+.c-heading-subtitle {
+    font-size: rem(16px);
+
+    @include media('sm') {
+        font-size: rem(18px);
+    }
+
+}

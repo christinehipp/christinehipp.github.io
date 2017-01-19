@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    #NAVIGATION
+\*------------------------------------*/
+
+/**
+ * Navigation list
+ */
+.c-nav__list {
+    @include clearfix();
+    font-weight: bold;
+}
+
+
+
+
+
+/**
+ * Navigation List item
+ *
+ * [1] Stateful 'current' version of navigation item.
+ */
+.c-nav__item {
+}
+
+
+
+
+
+/**
+ * Navigation link
+ */
+.c-nav__link {
+    display: block;
+    color: color('link');
+
+    .c-nav__item.is-current & {
+        text-decoration: underline;
+    }
+
+}

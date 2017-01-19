@@ -1,0 +1,18 @@
+/*------------------------------------*\
+    #FOOTER
+\*------------------------------------*/
+
+.c-footer {
+    overflow: hidden;
+    margin-top: spacer(1);
+    padding: spacer(1) 0 0;
+    background: #f14c10;
+    color: #fff;
+    font-size: rem(12px);
+    text-align: center;
+
+    @include media('sm') {
+        margin-top: spacer(3);
+    }
+
+}

@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #HEADER
+\*------------------------------------*/
+
+.c-header {
+    padding: spacer(1) 0 0;
+    text-align: center;
+
+    @include media('sm') {
+        padding: spacer(2) 0 spacer(1);
+        text-align: left;
+    }
+
+}
+
+.c-header__title {
+    margin-bottom: 0;
+    font-size: rem(36px);
+    line-height: 1;
+    font-weight: normal;
+
+    @include media('sm') {
+        font-size: rem(48px);
+        line-height: .8;
+    }
+
+}
+
+.c-header__tag {
+    color: #f14c10;
+    font-size: rem(14px);
+
+    @include media('sm') {
+        margin: 0;
+        font-size: rem(18px);
+    }
+
+}
+
+.c-header__row {
+
+    @include media('sm') {
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
