@@ -6,7 +6,8 @@
  * Navigation list
  */
 .c-nav__list {
-    @include clearfix();
+    display: flex;
+    justify-content: flex-end;
     font-weight: bold;
 }
 
@@ -20,6 +21,9 @@
  * [1] Stateful 'current' version of navigation item.
  */
 .c-nav__item {
+    & + & {
+        margin-left: spacer(1);
+    }
 }
 
 

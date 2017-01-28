@@ -4,7 +4,9 @@
 
 // Config to easily generate modifiers for different image aspect ratios
 $aspect-config: (
-    '2x1': 50%
+    '2x1': 50%,
+    'page': percentage(1200/800),
+    'batgirl': percentage(1222/800)
 );
 
 

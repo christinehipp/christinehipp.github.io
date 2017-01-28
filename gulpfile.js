@@ -21,7 +21,7 @@ var $ =     require('gulp-load-plugins')({
  * Object that contains paths for all asset types. Useful for changing build
  * environments.
  */
-var NAMESPACE = 'starter'
+var NAMESPACE = 'christinehipp'
 var PATH = {
     css:   './css/',
     js:    './js/',

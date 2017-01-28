@@ -13,11 +13,21 @@
 
 }
 
+.c-header__lockup {
+    color: inherit;
+
+    @include link-states() {
+        text-decoration: none;
+    }
+
+}
+
 .c-header__title {
     margin-bottom: 0;
     font-size: rem(36px);
     line-height: 1;
     font-weight: normal;
+    color: color('headings');
 
     @include media('sm') {
         font-size: rem(48px);
