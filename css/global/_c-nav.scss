@@ -36,9 +36,16 @@
 .c-nav__link {
     display: block;
     color: color('link');
+    text-align: center;
 
     .c-nav__item.is-current & {
         text-decoration: underline;
     }
 
+}
+
+
+.c-nav__warning {
+    display: block;
+    color: #555;
 }
