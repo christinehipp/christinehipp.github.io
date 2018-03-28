@@ -59,4 +59,6 @@ toggles.forEach(function (toggle) {
 
 if (getCookie('COMIC')) {
     toggleComics(getCookie('COMIC'));
+} else {
+    toggleComics('full');
 }
