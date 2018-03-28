@@ -1,157 +1,62 @@
-'use strict';
+"use strict";
 
-var _arguments = arguments;
-/* jshint esversion: 6 */
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-/**
- * jQuery reference to the document
- * @type {jQuery}
- */
-var $doc = $(document);
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
-/**
- * jQuery reference to the window
- * @type {jQuery}
- */
-var $win = $(window);
-
-/**
- * jQuery reference to the body tag
- * @type {jQuery}
- */
-var $body = $('body');
-
-/**
- * Returns a function, that, as long as it continues to be invoked, will not
- * be triggered. The function will be called after it stops being called for
- * N milliseconds.
- *
- * @param {function} func Function you want debounced
- * @param {integer} wait Time in ms to wait
- * @param {boolean} immediate If `immediate` is passed, trigger the function on
- * the leading edge, instead of the trailing
- *
- * @author http://davidwalsh.name/javascript-debounce-function
- */
-var debounce = function debounce(func, wait, immediate) {
-
-    var timeout = void 0;
-
-    return function () {
-
-        var _this = this;
-        var args = arguments;
-
-        var later = function later() {
-            timeout = null;
-            if (!immediate) {
-                func.apply(_this, args);
-            }
-        };
-
-        var callNow = immediate && !timeout;
-
-        clearTimeout(timeout);
-
-        timeout = setTimeout(later, wait);
-
-        if (callNow) {
-            func.apply(_this, args);
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
         }
-    };
-};
-
-/**
- * Returns a function, that, when invoked, will only be triggered at most once
- * during a given window of time. Normally, the throttled function will run
- * as much as it can, without ever going more than once per `wait` duration;
- * but if you'd like to disable the execution on the leading edge, pass
- * `{leading: false}`. To disable execution on the trailing edge, ditto.
- */
-var throttle = function throttle(func, wait, options) {
-
-    var context = void 0;
-    var args = void 0;
-    var result = void 0;
-    var timeout = null;
-    var previous = 0;
-
-    if (!options) {
-        options = {};
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
+    return "";
+}
 
-    var later = function later() {
-        previous = options.leading === false ? 0 : getNow();
-        timeout = null;
-        result = func.apply(context, args);
+var toggles = [].concat(_toConsumableArray(document.querySelectorAll('.js-toggle-type')));
+var pages = [].concat(_toConsumableArray(document.querySelectorAll('img[data-type]')));
 
-        if (!timeout) {
-            context = args = null;
-        }
-    };
+function toggleComics(type) {
+    setCookie('COMIC', type);
 
-    return function () {
+    toggles.forEach(function (toggle) {
+        return toggle.classList.remove('is-active');
+    });
+    pages.forEach(function (page) {
+        return page.classList.add('u-hidden');
+    });
 
-        var now = getNow();
+    toggles.filter(function (toggle) {
+        return toggle.getAttribute('data-type') === type;
+    }).forEach(function (toggle) {
+        return toggle.classList.add('is-active');
+    });
+    pages.filter(function (page) {
+        return page.getAttribute('data-type') === type;
+    }).forEach(function (page) {
+        return page.classList.remove('u-hidden');
+    });
+}
 
-        if (!previous && options.leading === false) {
-            previous = now;
-        }
+toggles.forEach(function (toggle) {
+    var type = toggle.getAttribute('data-type');
 
-        var remaining = wait - (now - previous);
-        context = undefined;
-        args = _arguments;
-
-        if (remaining <= 0 || remaining > wait) {
-
-            if (timeout) {
-                clearTimeout(timeout);
-                timeout = null;
-            }
-
-            previous = now;
-            result = func.apply(context, args);
-
-            if (!timeout) {
-                context = args = null;
-            }
-        } else if (!timeout && options.trailing !== false) {
-            timeout = setTimeout(later, remaining);
-        }
-
-        return result;
-    };
-};
-
-/**
- * Get current timestamp
- */
-var getNow = function getNow() {
-
-    return Date.now() || function () {
-        return new Date().getTime();
-    };
-};
-
-/**
- * Reusable Active State toggle function. To toggle 'is-active' on a different
- * element add data-target('.class') or data-target('#id')
- *
- * @namespace
- */
-$(document.body).on('click', '.js-toggle-active', function (e) {
-
-    e.preventDefault();
-
-    // Store $this as clicked
-    var $this = $(undefined); // [1]
-
-    // Check if data-target is set, and store it as _data
-    var data = $this.data('target'); // [2]
-
-    // If data-target was set pass it through jQuery and use it as the target,
-    // or assume the clicked element.
-    var target = data ? $(data) : $this; // [3]
-
-    target.toggleClass('is-active');
+    toggle.addEventListener('click', function () {
+        toggleComics(type);
+    });
 });
+
+if (getCookie('COMIC')) {
+    toggleComics(getCookie('COMIC'));
+}

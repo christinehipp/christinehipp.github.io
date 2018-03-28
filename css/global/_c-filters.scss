@@ -1,0 +1,32 @@
+/*------------------------------------*\
+    #FILTERS
+\*------------------------------------*/
+
+.c-filters {
+    width: 100%;
+    position: sticky;
+    top: 10px;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.c-filters__filter {
+    padding: em(5px, 15px) em(15px, 15px);
+    border: none;
+    background: #eee;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @include media('sm') {
+        font-size: 15px;
+    }
+
+    &.is-active {
+        background: color('link');
+        color: #fff;
+    }
+}
