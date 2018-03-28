@@ -20,6 +20,11 @@ function getCookie(cname) {
     return "";
 }
 
+function getQueryStringValue (key) {
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+}
+
+
 
 const toggles = [...document.querySelectorAll('.js-toggle-type')];
 const pages = [...document.querySelectorAll('img[data-type]')];
@@ -47,8 +52,12 @@ toggles.forEach(toggle => {
     })
 });
 
-if (getCookie('COMIC')) {
+console.log(getQueryStringValue('type'))
+
+if (getQueryStringValue('type')) {
+    toggleComics(getQueryStringValue('type'));
+} else if (getCookie('COMIC')) {
     toggleComics(getCookie('COMIC'));
 } else {
-    toggleComics('full');
+    toggleComics('full')
 }
